@@ -22,21 +22,21 @@ class TestBooksCollector:
 
     # тест на добавление жанра к книге — ожидаемый положительный результат
     def test_set_book_genre_added_genre_book_positive_result(self, collector):
-        collector.add_new_book('Шерлок Холм')
-        collector.set_book_genre('Шерлок Холм', 'Детективы')
-        assert collector.books_genre.get('Шерлок Холм') == 'Детективы'
+        collector.add_new_book('Шерлок Холмс')
+        collector.set_book_genre('Шерлок Холмс', 'Детективы')
+        assert collector.books_genre.get('Шерлок Холмс') == 'Детективы'
 
     # тест на добавление жанра, который не является списком
     def test_set_book_genre_add_genre_is_not_list(self, collector):
-        collector.add_new_book('Шерлок Холм')
-        collector.set_book_genre('Шерлок Холм', 'Жанр_которого_нет')
-        assert collector.books_genre.get('Шерлок Холм') == '', 'Книге добавился жанр которого нет в допустимых жанрах'
+        collector.add_new_book('Шерлок Холмс')
+        collector.set_book_genre('Шерлок Холмс', 'Жанр_которого_нет')
+        assert collector.books_genre.get('Шерлок Холмс') == '', 'Книге добавился жанр которого нет в допустимых жанрах'
 
     # тест на получения жанра книги по названию — ожидаемый положительный результат
     def test_get_book_genre_for_name_positive_result(self, collector):
-        collector.add_new_book('Шерлок Холм')
-        collector.set_book_genre('Шерлок Холм', 'Детективы')
-        assert collector.get_book_genre('Шерлок Холм') == 'Детективы'
+        collector.add_new_book('Шерлок Холмс')
+        collector.set_book_genre('Шерлок Холмс', 'Детективы')
+        assert collector.get_book_genre('Шерлок Холмс') == 'Детективы'
 
     # тест на получения книг определённого жанра - возвращаются две книги детективного жанра
     def test_get_books_with_specific_genre_get_two_books_detectiv(self, collector):
@@ -56,37 +56,24 @@ class TestBooksCollector:
 
     # тест на добавления книги в избранное — добавляется одна книга
     def test_add_book_in_favorites_add_one_book(self, collector):
-        collector.add_new_book('Шерлок Холм')
-        collector.add_book_in_favorites('Шерлок Холм')
-        assert len(collector.get_list_of_favorites_books()) == 1 and collector.favorites[0] == 'Шерлок Холм'
+        collector.add_new_book('Шерлок Холмс')
+        collector.add_book_in_favorites('Шерлок Холмс')
+        assert len(collector.get_list_of_favorites_books()) == 1 and collector.favorites[0] == 'Шерлок Холмс'
 
     # тест на добавления книги в избранное — добавляются две книги, одна из которых дубликат
     def test_add_book_in_favorites_add_two_double_book(self, collector):
-        collector.add_new_book('Шерлок Холм')
-        collector.add_book_in_favorites('Шерлок Холм')
-        collector.add_book_in_favorites('Шерлок Холм')
+        collector.add_new_book('Шерлок Холмс')
+        collector.add_book_in_favorites('Шерлок Холмс')
+        collector.add_book_in_favorites('Шерлок Холмс')
         assert len(collector.get_list_of_favorites_books()) == 1, 'В избранное добавился дубль книги'
 
     # тест на удаления книги из избранного
     def test_delete_book_from_favorites(self, collector):
-        collector.add_new_book('Шерлок Холм')
-        collector.add_book_in_favorites('Шерлок Холм')
-        collector.delete_book_from_favorites('Шерлок Холм')
+        collector.add_new_book('Шерлок Холмс')
+        collector.add_book_in_favorites('Шерлок Холмс')
+        collector.delete_book_from_favorites('Шерлок Холмс')
         assert len(collector.favorites) == 0
 
-    # # тест на получение жанра книг
-    # def test_get_books_genre(self, collector):
-    #     collector.books_genre = {'Книга_1': 'Фантастика', 
-    #                              'Книга_2': 'Ужасы'}
-    #     assert collector.get_books_genre() == {'Книга_1': 'Фантастика', 
-    #                                            'Книга_2': 'Ужасы'}
-
-    # # тест на получие списока избранного
-    # def test_get_list_of_favorites_books(self, collector):
-    #     collector.books_genre = {'Книга_1': 'Комедии'}
-    #     collector.add_book_in_favorites('Книга_1')
-    #     assert collector.get_list_of_favorites_books() == ['Книга_1']
-    
     # тест на получение жанра книг
     def test_get_books_genre(self, collector):
         collector.books_genre = {'Шерлок Холмс': 'Фантастика', 
