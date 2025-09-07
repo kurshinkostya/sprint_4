@@ -74,4 +74,29 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Шерлок Холм')
         assert len(collector.favorites) == 0
 
+    # # тест на получение жанра книг
+    # def test_get_books_genre(self, collector):
+    #     collector.books_genre = {'Книга_1': 'Фантастика', 
+    #                              'Книга_2': 'Ужасы'}
+    #     assert collector.get_books_genre() == {'Книга_1': 'Фантастика', 
+    #                                            'Книга_2': 'Ужасы'}
+
+    # # тест на получие списока избранного
+    # def test_get_list_of_favorites_books(self, collector):
+    #     collector.books_genre = {'Книга_1': 'Комедии'}
+    #     collector.add_book_in_favorites('Книга_1')
+    #     assert collector.get_list_of_favorites_books() == ['Книга_1']
+    
+    # тест на получение жанра книг
+    def test_get_books_genre(self, collector):
+        collector.books_genre = {'Шерлок Холмс': 'Фантастика', 
+                                 'Шерлок Холмс': 'Ужасы'}
+        assert collector.get_books_genre() == {'Шерлок Холмс': 'Фантастика', 
+                                               'Шерлок Холмс': 'Ужасы'}
+
+    # тест на получие списока избранного
+    def test_get_list_of_favorites_books(self, collector):
+        collector.books_genre = {'Шерлок Холмс': 'Комедии'}
+        collector.add_book_in_favorites('Шерлок Холмс')
+        assert collector.get_list_of_favorites_books() == ['Шерлок Холмс']
 
