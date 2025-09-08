@@ -81,7 +81,7 @@ class TestBooksCollector:
         assert collector.get_books_genre() == {'Шерлок Холмс': 'Фантастика', 
                                                'Шерлок Холмс': 'Ужасы'}
 
-    # тест на получие списока избранного
+    # тест на получие списка избранного
     def test_get_list_of_favorites_books(self, collector):
         collector.books_genre = {'Шерлок Холмс': 'Комедии'}
         collector.add_book_in_favorites('Шерлок Холмс')
